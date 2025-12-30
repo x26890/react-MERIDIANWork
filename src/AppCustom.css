@@ -1,0 +1,81 @@
+/* AppCustom.css */
+
+.react-calendar { 
+  font-size: 1rem !important; 
+  border: none !important; 
+  width: 100% !important; 
+}
+
+/* 註解：強制設定格子固定高度為 130px，並使用 Flex Column 佈局 */
+.react-calendar__tile { 
+  height: 130px !important; 
+  display: flex !important; 
+  flex-direction: column !important; 
+  align-items: center !important; 
+  justify-content: flex-start !important; 
+  padding: 5px 0 !important;
+  position: relative;
+}
+
+/* 註解：日期數字不被壓縮，保持在上方 */
+.react-calendar__month-view__days__day abbr {
+  margin-bottom: 5px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* 註解：垂直捲動容器的核心邏輯 */
+.tile-avatar-scroll-y {
+  width: 100%;
+  flex-grow: 1;             /* 讓容器佔滿剩餘高度 */
+  max-height: 85px;         /* 限制最大高度，觸發滾動 */
+  overflow-y: auto !important; /* 強制開啟垂直滾動 */
+  overflow-x: hidden;       /* 禁用橫向滾動 */
+  padding: 2px 0;
+  
+  /* 註解：桌面版滾動條美化 (防止看不到滾動條) */
+  scrollbar-width: thin;
+  scrollbar-color: #D8BFD8 transparent;
+}
+
+/* 註解：Chrome/Edge/Safari 的細部滾動條設定 */
+.tile-avatar-scroll-y::-webkit-scrollbar {
+  width: 4px;
+}
+.tile-avatar-scroll-y::-webkit-scrollbar-thumb {
+  background-color: #D8BFD8;
+  border-radius: 10px;
+}
+.tile-avatar-scroll-y::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.react-calendar__tile--active { 
+  background: #D8BFD8 !important; 
+  border-radius: 10px; 
+  color: white !important; 
+}
+
+.btn-primary { 
+  background-color: #D8BFD8 !important; 
+  border-color: #D8BFD8 !important; 
+}
+
+.btn-outline-primary { 
+  color: #D8BFD8 !important; 
+  border-color: #D8BFD8 !important; 
+}
+
+/* 手機版適配 */
+@media (max-width: 576px) { 
+  .react-calendar__tile { 
+    height: 95px !important; 
+  }
+  .tile-avatar-scroll-y { 
+    max-height: 60px; 
+    scrollbar-width: none; 
+  }
+  .tile-avatar-scroll-y::-webkit-scrollbar { 
+    display: none; 
+  }
+}
