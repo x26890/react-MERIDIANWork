@@ -1,16 +1,37 @@
-# React + Vite
+團隊即時排班管理系統
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+這是一個專門為 VTuber。管理員可以透過此系統為不同團體（如 Meridian, Spring Fish）建立、編輯與管理直播行程，並具備即時數據同步與權限控管功能。
+========================================================================================
+專案成果
+Live Demo: https://x26890.github.io/react-MERIDIANWork/
+========================================================================================
+MERIDIAN:  
+測試帳號:meridian@admin.com
+測試密碼:m123456
 
-Currently, two official plugins are available:
+春魚:
+測試帳號:springfish@admin.com
+測試密碼:s123456
+========================================================================================
+核心功能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+雙模式行程檢視分為
+日期模式:透過點擊日曆日期所有成員行程
+成員模式:點擊成員模式時會顯示出所有(有行程的VTuber)
+========================================================================================
+技術亮點 
 
-## React Compiler
+自定義 Hook (Custom Hooks)**: 封裝 `useSchedules` 邏輯，分離 UI 渲染與資料處理，提升程式碼的可維護性。
+效能優化: 使用 `useMemo` 處理大量行程的過濾與排序邏輯，減少不必要的重新渲染。
+防呆設計 在處理字串比對與排序時，加入 Optional Chaining 與條件判斷，徹底解決 `localeCompare` 報錯與 `src=""` 的網路資源浪費問題。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+========================================================================================
+在這個專案開發過程中，我解決了以下技術難題：
+異步資料流管理:學習如何優雅地處理 Firestore 的非同步訂閱與取消訂閱，避免記憶體洩漏。
+複雜邏輯處理: 實作了多重過濾器（日期 + 成員 + 團體），並確保在切換模式時資料狀態的一致性。
+AI 協作開發: 練習精確描述需求與 Bug 現象，利用 AI 工具大幅提升開發速度與 Debug 效率。
 
-## Expanding the ESLint configuration
+========================================================================================
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+授權
+本專案僅供練習與展示使用。
